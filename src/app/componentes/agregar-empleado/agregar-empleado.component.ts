@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-agregar-empleado',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarEmpleadoComponent implements OnInit {
 
-  constructor() { }
+  formularioEmpleados:FormGroup;
+
+  constructor(public formulario:FormBuilder) { 
+
+    this.formularioEmpleados = this.formulario.group({
+      nombre:[''],
+      correo:['']
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  enviarDatos():any{
+    console.log(this.formularioEmpleados.value);
   }
 
 }
