@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from 'src/app/servicios/crud.service';
 
 @Component({
   selector: 'app-listar-empleado',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarEmpleadoComponent implements OnInit {
 
-  constructor() { }
+  Empleados:any;
+
+  constructor(
+    private crudService:CrudService
+  ) { }
 
   ngOnInit(): void {
+    this.crudService.obtenerEmpleados().subscribe( respuesta =>{
+      this.Empleados = respuesta;
+    });
+  }
+
+  borrarEmpleado(id:any,iControl:any){
+    // console.log(id,iControl);
+    if(window.confirm("Realmente deseas borrar al empleado?")){
+      this.crudService.eliminarEmpleado(id).subscribe(res=>{
+        this.Empleados.splice(iControl,1);
+      })
+    }
   }
 
 }

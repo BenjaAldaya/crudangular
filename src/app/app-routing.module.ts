@@ -6,7 +6,7 @@ import { ListarEmpleadoComponent } from './componentes/listar-empleado/listar-em
 
 const routes: Routes = [
   {path: '',pathMatch:'full',redirectTo:'listar-empleado'},
-  {path: 'listar-empleado',component:ListarEmpleadoComponent},
+  {path: 'listar-empleados',component:ListarEmpleadoComponent},
   {path:'editar-empleado/:id', component:EditarEmpleadoComponent},
   {path:'agregar-empleado', component:AgregarEmpleadoComponent}
 ];
